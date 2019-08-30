@@ -2,6 +2,7 @@ import Banner from './Banner';
 import MainView from './MainView';
 import React from 'react';
 import Tags from './Tags';
+import Notifications from './Notifications';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import {
@@ -34,7 +35,7 @@ class Home extends React.Component {
       agent.Articles.feed :
       agent.Articles.all;
 
-    this.props.onLoad(tab, articlesPromise, Promise.all([agent.Tags.getAll(), articlesPromise()]));
+    this.props.onLoad(tab, articlesPromise, Promise.all([agent.Tags.getAll(), articlesPromise(), agent.Notifications.all()]));
   }
 
   componentWillUnmount() {
@@ -49,6 +50,8 @@ class Home extends React.Component {
 
         <div className="container page">
           <div className="row">
+            <Notifications notifications={this.props.notifications} />
+
             <MainView />
 
             <div className="col-md-3">

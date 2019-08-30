@@ -37,6 +37,10 @@ const Auth = {
     requests.put('/user', { user })
 };
 
+const Notifications = {
+  all: () => requests.get('/notifications')
+}
+
 const Tags = {
   getAll: () => requests.get('/tags')
 };
@@ -90,6 +94,7 @@ export default {
   Articles,
   Auth,
   Comments,
+  Notifications,
   Profile,
   Tags,
   setToken: _token => { token = _token; }
